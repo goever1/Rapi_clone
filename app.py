@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://dev:0000@localhost/rappidb'
 db = SQLAlchemy(app)
 
-from models import TipoComida, Comida, Restaurante  # Asegúrate de tener definidos estos modelos
+from models import TipoComida, Comida, Restaurante
 
 # Ruta para obtener todos los tipos de comida
 @app.route('/tiposcomida', methods=['GET'])
