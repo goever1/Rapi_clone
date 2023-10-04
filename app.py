@@ -1,4 +1,7 @@
+#!/usr/bin/python3
+
 from flask import Flask, request, jsonify
+from models.models import db, TipoComida, Comida, Restaurante
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
