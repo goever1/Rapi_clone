@@ -13,7 +13,14 @@ const User = require('./models/User');
 // Clave secreta para firmar el token JWT
 const JWT_SECRET = 'clavesegura'; // Cambia esto por una clave segura en producción
 
-// Ruta para el registro de usuarios
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/templates/index.html');
+});
+
+
+app.get('/registro', (req, res) => {
+    res.sendFile(__dirname + '/views/registro.html');
+});
 app.post('/register', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -38,7 +45,9 @@ app.post('/register', async (req, res) => {
   }
 });
 
-// Ruta para el inicio de sesión
+app.get('/login', (req, res) => {
+    res.sendFile(__dirname + '/templates/login.html');
+});
 app.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;

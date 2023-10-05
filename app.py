@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from flask import Flask, render_template
 from flask import Flask, request, jsonify
 from models.models import db, TipoComida, Comida, Restaurante
 from flask_sqlalchemy import SQLAlchemy
@@ -30,6 +31,18 @@ def get_restaurantes():
     restaurantes = Restaurante.query.all()
     restaurantes_json = [{'id': restaurante.RestauranteID, 'nombre': restaurante.NombreRestaurante, 'direccion': restaurante.Direccion} for restaurante in restaurantes]
     return jsonify({'restaurantes': restaurantes_json})
+
+@app.route('/templates/')
+def inicio():
+    return render_template('index.html')
+
+@app.route('/templates/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/templates/registro')
+def registro():
+    return render_template('registro.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
