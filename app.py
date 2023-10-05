@@ -32,15 +32,15 @@ def get_restaurantes():
     restaurantes_json = [{'id': restaurante.RestauranteID, 'nombre': restaurante.NombreRestaurante, 'direccion': restaurante.Direccion} for restaurante in restaurantes]
     return jsonify({'restaurantes': restaurantes_json})
 
-@app.route('/')
+@app.route('/templates/html/')
 def inicio():
     return render_template('index.html')
 
-@app.route('/login')
+@app.route('/templates/html/login')
 def login():
     return render_template('login.html')
 
-@app.route('/registro')
+@app.route('/templates/html/registro')
 def registro():
     return render_template('registro.html')
 
