@@ -8,8 +8,6 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://dev:0000@localhost/rappidb'
 db = SQLAlchemy(app)
 
-from models import db, TipoComida, Comida, Restaurante
-
 # Ruta para obtener todos los tipos de comida
 @app.route('/tiposcomida', methods=['GET'])
 def get_tiposcomida():
@@ -30,6 +28,14 @@ def get_restaurantes():
     restaurantes = Restaurante.query.all()
     restaurantes_json = [{'id': restaurante.RestauranteID, 'nombre': restaurante.NombreRestaurante, 'direccion': restaurante.Direccion} for restaurante in restaurantes]
     return jsonify({'restaurantes': restaurantes_json})
+
+@app.route('/')
+def inicio():
+    return render_template('index.html')
+
+@app.route('/')
+def login():
+    return render_template('login_page.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
